@@ -10,7 +10,7 @@ cd c:\
 timeout 5 > NUL
 @echo Cehcking for updates
 timeout 1 > NUL
-set url=http://pierce.baronoff.net/Log4jPatcher/version.txt
+set url=https://raw.githubusercontent.com/Vooskie/Log4J-Patcher/main/version.txt
 set file=version.txt
 certutil -urlcache -split -f %url% %file%
 set /p nwstvrsn=<version.txt
@@ -18,7 +18,7 @@ if %vrsn% < %nwstvrsn% goto newupdateavailable
 if %vrsn% == %nwstvrsn% goto noupdateavailable
 :newupdateavailable
 echo Downloading Update
-set url=http://pierce.baronoff.net/Log4J%20Patcher/Latest/Log4JPatcher.bat
+set url=https://raw.githubusercontent.com/Vooskie/Log4J-Patcher/main/Latest/Log4JPatcher.bat
 set file=Log4JPatcher.bat
 
 certutil -urlcache -split -f %url% %file%
