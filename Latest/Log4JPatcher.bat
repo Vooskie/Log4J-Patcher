@@ -1,28 +1,29 @@
-@echo off
+@echo on
 @echo ################################################
 @echo #                                              #
 @echo #  Log4J Patcher, devloped by Pierce Baronoff  #
 @echo #   visit pierce.baronoff.net for more tools   #
 @echo #                                              #
 @echo ################################################
-set /p vrsn=1.5
+set /p vrsn=1.4
 cd c:\
 timeout 5 > NUL
 @echo Cehcking for updates
 timeout 1 > NUL
 set url=https://raw.githubusercontent.com/Vooskie/Log4J-Patcher/main/version.txt
 set file=version.txt
+
 certutil -urlcache -split -f %url% %file%
 set /p nwstvrsn=<version.txt
 if %vrsn% < %nwstvrsn% goto newupdateavailable
 if %vrsn% == %nwstvrsn% goto noupdateavailable
+
 :newupdateavailable
 echo Downloading Update
 set url=https://raw.githubusercontent.com/Vooskie/Log4J-Patcher/main/Latest/Log4JPatcher.bat
 set file=Log4JPatcher.bat
-
 certutil -urlcache -split -f %url% %file%
-call Log4J%20Patcher%20V%nwstvrsn%.bat
+call Log4JPatcher.bat
 
 :noupdateavailable
 echo No Update Available
